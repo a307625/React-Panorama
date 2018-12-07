@@ -62,13 +62,18 @@
   height: 118px;
   display: inline-flex;
   margin: 0 10px;
+  cursor: pointer;
   img {
     width: 148px;
     height: 86px;
     border: 6px solid white;
   }
-}
-
-.panorama_list:hover {
-  cursor: pointer;
+  p {
+    color: white;
+    display: block;
+    position: absolute;
+    top: 108px;
+    text-align: center;
+    width: 160px;
+  }
 }
