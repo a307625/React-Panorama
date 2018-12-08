@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Demo from '../../components/Demo';
-import { fromJS, toJS } from 'immutable'
+import { connect } from 'react-redux'
+import Demo from '../../components/Demo'
 
 import {
   setPanoramaIndex
-} from '../../actions';
+} from '../../actions'
 
 export default connect(
   (state) => ({
@@ -13,8 +11,7 @@ export default connect(
   }),
   (dispatch) => ({
     handleSelectPanorama: (index) => () => {
-      console.log('index', index);
       dispatch(setPanoramaIndex({value: index}))
     }
   })
-)(Demo);
+)(Demo)

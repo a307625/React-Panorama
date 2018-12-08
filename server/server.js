@@ -10,7 +10,7 @@ app.get('/favicon.jepg', function(req, res) {
     res.status(204);
 });
 
-if (process.env.NODE_ENV === 'development') {
+if (true) {// (process.env.NODE_ENV === 'development') {
   var webpack = require('webpack');
   var webpackDevMiddleware = require('webpack-dev-middleware');
   var webpackHotMiddleware = require('webpack-hot-middleware');

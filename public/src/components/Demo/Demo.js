@@ -22,7 +22,7 @@ class Demo extends Component {
 
 	getFetchData() {
 		(async () => {
-			const panorama = await fetchApi.getPanorama()
+			const panorama = await fetchApi.getPanorama(document.location.pathname)
 			this.setState({
 				panorama: fromJS(panorama[0]),
 				loading: false
@@ -63,13 +63,13 @@ class Demo extends Component {
 					<div>
 						<div>
 							<a-scene>
-								<a-assets>
 								{
 									panoramaArr.map((panorama, index) => (
-										<img id={index.toString()} key={ index } crossOrigin="anonymous" src={ panorama.desktopUrl } />
+										<a-assets key={ index }>
+											<img id={index.toString()} crossOrigin="anonymous" src={ panorama.desktopUrl } />
+										</a-assets>
 									))
 								}
-								</a-assets>
 								<a-sky material="opacity: 0" id="image-360" rotation={panoramaArr[panoramaIndex].rotation} position={panoramaArr[panoramaIndex].position} src={ "#" + panoramaIndex }>
 									<a-animation attribute="material.opacity" dur="5000" repeat="0" to="1"></a-animation>
 								</a-sky>
@@ -93,8 +93,8 @@ class Demo extends Component {
 			}
 			</div>
 		)
-		}
 	}
+}
 
 
 export default Demo

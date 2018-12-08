@@ -3,13 +3,16 @@ import Config from '../config'
 
 const { databaseURL, serviceAccount } = Config
 
-const getPanorama = () => {
-    const VRCamFirebase = firebase.initializeApp({
-      databaseURL,
-      serviceAccount
-    })
+const VRCamFirebase = firebase.initializeApp({
+  databaseURL,
+  serviceAccount
+})
 
-    const fetchPanoramas = VRCamFirebase.database().ref('/panoramas').orderByChild('Building').equalTo('c951a5af-603f-4003-9d1c-707657febe95')
+const getPanorama = (url) => {
+    const id = url.split('/')[1]
+
+
+    const fetchPanoramas = VRCamFirebase.database().ref('/panoramas').orderByChild('Building').equalTo(id)
     const response = fetchPanoramas.once('value').then(snapshot => {
       return snapshot.val()
     })
@@ -18,8 +21,8 @@ const getPanorama = () => {
 
 
 export default {
-  getPanorama: () => {
-    const promises = [getPanorama()]
+  getPanorama: (url) => {
+    const promises = [getPanorama(url)]
     return Promise.all(promises)
   }
 }
