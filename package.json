@@ -1,9 +1,9 @@
 {
-  "name": "happyfit-course-portal",
+  "name": "istaging",
   "version": "1.0.0",
-  "description": "HappyFit Course Website Portal",
+  "description": "istaging demo",
   "main": "index.js",
-  "repository": "git@github.com:AppMasterTW/happyfit-course-portal.git",
+  "repository": "git@bitbucket.org:a307625/istaging.git",
   "scripts": {
     "dev": "NODE_ENV='development' node ./server",
     "build-prod": "webpack --config webpack.build.js --env.NODE_ENV=production --progress",

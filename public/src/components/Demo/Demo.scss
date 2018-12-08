@@ -1,49 +1,3 @@
-.scene {
-  height: 100vh;
-  animation: scene 5s;
-  -moz-animation: scene 5s;
-  -webkit-animation: scene 5s;
-  -o-animation: scene 5s;
-}
-
-@keyframes scene
-{
-  from {
-    -webkit-filter: blur(50px);
-    -moz-filter: blur(50px);
-    -o-filter: blur(50px);
-    -ms-filter: blur(50px);
-    filter: blur(50px);
-  }
-  to {
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    -ms-filter: blur(0px);
-    filter: blur(0px);
-  }
-}
-
-@-moz-keyframes scene
-{
-  from {
-    -webkit-filter: blur(50px);
-    -moz-filter: blur(50px);
-    -o-filter: blur(50px);
-    -ms-filter: blur(50px);
-    filter: blur(50px);
-    height: 100vh;
-  }
-  to {
-    -webkit-filter: blur(0px);
-    -moz-filter: blur(0px);
-    -o-filter: blur(0px);
-    -ms-filter: blur(0px);
-    filter: blur(0px);
-    height: 100vh;
-  }
-}
-
 .panoramas {
   width: 100%;
   height: 161px;
@@ -72,7 +26,7 @@
     color: white;
     display: block;
     position: absolute;
-    top: 108px;
+    top: 115px;
     text-align: center;
     width: 160px;
   }

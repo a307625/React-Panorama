@@ -4,24 +4,17 @@ import Demo from '../../components/Demo';
 import { fromJS, toJS } from 'immutable'
 
 import {
-  setPanorama
+  setPanoramaIndex
 } from '../../actions';
 
 export default connect(
   (state) => ({
-     panorama: state.getIn(['demoReducers', 'panorama'])
+     panoramaIndex: state.getIn(['demo', 'panoramaIndex'])
   }),
   (dispatch) => ({
-    selectPanorama: (panorama) => (id) => () => {
-      console.log('id', id);
-      console.log('panorama', panorama);
+    handleSelectPanorama: (index) => () => {
+      console.log('index', index);
+      dispatch(setPanoramaIndex({value: index}))
     }
-  }),
-  (stateProps, dispatchProps, ownProps) => {
-    const { panorama } = stateProps
-    const { selectPanorama } = dispatchProps
-    return Object.assign({}, stateProps, dispatchProps, ownProps, {
-      selectPanorama: selectPanorama(panorama)
-    });
-  }
+  })
 )(Demo);
