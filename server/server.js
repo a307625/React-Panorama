@@ -6,7 +6,7 @@ const app = new Express();
 const port = process.env.PORT || 3001
 
 
-app.get('/favicon.jepg', function(req, res) {
+app.get('/favicon.jpeg', function(req, res) {
     res.status(204);
 });
 
