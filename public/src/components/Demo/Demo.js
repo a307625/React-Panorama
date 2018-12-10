@@ -6,13 +6,15 @@ import firebase from 'firebase'
 import fetchApi from '../../utils/fetchComponentData'
 import styles from './Demo.scss'
 import 'babel-polyfill'
+import Scene from './Scene'
 
 class Demo extends Component {
 	constructor(props) {
     super(props)
     this.state = {
 			loading: true,
-			panorama: null
+			panorama: null,
+			path: document.location.pathname
 		}
   }
 
@@ -32,8 +34,9 @@ class Demo extends Component {
 
 	render() {
 		const {
+			loading,
 			panorama,
-			loading
+			path
     } = this.state
 
 		const {
@@ -55,35 +58,26 @@ class Demo extends Component {
 		})
 
 		const listWidth = panorama && 180 * panoramaArr.length || 0
-
 		return (
 			<div>
 			{
 				(!loading) && (
 					<div>
-						<div>
-							<a-scene>
-								{
-									panoramaArr.map((panorama, index) => (
-										<a-assets key={ index }>
-											<img id={index.toString()} crossOrigin="anonymous" src={ panorama.desktopUrl } />
-										</a-assets>
-									))
-								}
-								<a-sky material="opacity: 0" id="image-360" rotation={panoramaArr[panoramaIndex].rotation} position={panoramaArr[panoramaIndex].position} src={ "#" + panoramaIndex }>
-									<a-animation attribute="material.opacity" dur="5000" repeat="0" to="1"></a-animation>
-								</a-sky>
-							</a-scene>
-
-						</div>
+						{
+							panoramaArr.map((panorama, index) => (
+								(index === panoramaIndex) && <Scene panorama={ panorama } key = { index } />
+							))
+						}
 						<div className={styles.panoramas}>
 							<ul style={{width: listWidth + 'px'}}>
 							{
 								panoramaArr.map((panorama, index) => (
-									<li className={ styles.panorama_list } key={ index } onClick={handleSelectPanorama(index)}>
-										<img crossOrigin="anonymous" src={ panorama.mobileUrl } />
-										<p>{panorama.category}</p>
-									</li>
+									<Link to={ path + '?index=' + (index + 1) } key={ index } onClick={ handleSelectPanorama() }>
+										<li className={ (index === panoramaIndex) && styles.panorama_list_on || styles.panorama_list_off }>
+											<img crossOrigin="anonymous" src={ panorama.mobileUrl } />
+											<p>{panorama.category}</p>
+										</li>
+									</Link>
 								))
 							}
 							</ul>

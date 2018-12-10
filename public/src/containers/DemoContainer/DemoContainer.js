@@ -10,7 +10,9 @@ export default connect(
      panoramaIndex: state.getIn(['demo', 'panoramaIndex'])
   }),
   (dispatch) => ({
-    handleSelectPanorama: (index) => () => {
+    handleSelectPanorama: () => {
+      const index = document.location.href.split('?index=')[1] - 1 || 0
+      console.log('index', index);
       dispatch(setPanoramaIndex({value: index}))
     }
   })
