@@ -12,7 +12,6 @@ export default connect(
   (dispatch) => ({
     handleSelectPanorama: () => {
       const index = document.location.href.split('?index=')[1] - 1 || 0
-      console.log('index', index);
       dispatch(setPanoramaIndex({value: index}))
     }
   })
