@@ -1,11 +1,11 @@
 module.exports = {
   entry: [
-    './public/src/index.js'
+    './src/index.js'
   ],
   output: {
     path: `${__dirname}/dist`,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js.gz'
   },
   module: {
     rules: [

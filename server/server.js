@@ -10,7 +10,7 @@ app.get('/favicon.ico', function(req, res) {
     res.status(204);
 });
 
-if (true) {// (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
   var webpack = require('webpack');
   var webpackDevMiddleware = require('webpack-dev-middleware');
   var webpackHotMiddleware = require('webpack-hot-middleware');
@@ -21,8 +21,8 @@ if (true) {// (process.env.NODE_ENV === 'development') {
   app.use(webpackHotMiddleware(compiler));
 
 
-  app.use(Express.static(path.join(__dirname,'../public')));
-  const root = `${__dirname}/../public`
+  app.use(Express.static(path.join(__dirname,'../src')));
+  const root = `${__dirname}/../client`
   app.use(fallback('index.html', { root }))
 } else {
   app.get('*.js', function (req, res, next) {
