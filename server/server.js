@@ -6,7 +6,7 @@ const app = new Express();
 const port = process.env.PORT || 3001
 
 
-app.get('/favicon.jepg', function(req, res) {
+app.get('/favicon.ico', function(req, res) {
     res.status(204);
 });
 
@@ -21,8 +21,8 @@ if (process.env.NODE_ENV === 'development') {
   app.use(webpackHotMiddleware(compiler));
 
 
-  app.use(Express.static(path.join(__dirname,'../public')));
-  const root = `${__dirname}/../public`
+  app.use(Express.static(path.join(__dirname,'../src')));
+  const root = `${__dirname}/../client`
   app.use(fallback('index.html', { root }))
 } else {
   app.get('*.js', function (req, res, next) {

@@ -1,0 +1,46 @@
+.panoramas {
+  width: 100%;
+  height: 161px;
+  background: rgba(88,88,90,0.7);
+  position: absolute;
+  bottom: 0;
+  padding: 14px 10px;
+  overflow-x: scroll;
+  ul {
+    padding: 0;
+  }
+}
+
+@mixin panorama_list {
+  width: 160px;
+  height: 118px;
+  display: inline-flex;
+  margin: 0 10px;
+  cursor: pointer;
+  p {
+    color: white;
+    display: block;
+    position: absolute;
+    top: 115px;
+    text-align: center;
+    width: 160px;
+  }
+}
+
+.panorama_list_on {
+  @include panorama_list;
+  img {
+    width: 148px;
+    height: 86px;
+    border: 6px solid #ec0974;
+  }
+}
+
+.panorama_list_off {
+  @include panorama_list;
+  img {
+    width: 148px;
+    height: 86px;
+    border: 6px solid white;
+  }
+}

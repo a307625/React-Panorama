@@ -6,12 +6,12 @@ const CompressionPlugin = require('compression-webpack-plugin');
 module.exports = env => {
   return {
     entry: [
-      './public/src/index.js'
+      './src/index.js'
     ],
     output: {
       path: `${__dirname}/dist`,
       publicPath: '/',
-      filename: 'bundle.js'
+      filename: 'bundle.js.gz'
     },
     module: {
       rules: [
@@ -60,10 +60,10 @@ module.exports = env => {
     },
     plugins: [
       new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV || 'development')
+          'process.env.NODE_ENV': JSON.stringify('production')
       }),
       new HtmlWebpackPlugin({
-          template: './public/index.html',
+          template: './client/index.html',
       }),
       new webpack.optimize.UglifyJsPlugin({
           compress: {
